@@ -174,16 +174,16 @@ function(picowota_build_combined NAME)
 		COMMAND ${CMAKE_OBJCOPY} -Obinary ${COMBINED}.elf ${COMBINED}.bin
 	)
 
-	if (NOT ELF2UF2_FOUND)
-		set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PICO_SDK_PATH}/tools)
-		find_package(ELF2UF2)
-	endif()
-	if (ELF2UF2_FOUND)
-		add_custom_command(TARGET ${COMBINED} POST_BUILD
-			COMMAND ELF2UF2 ${COMBINED}.elf ${COMBINED}.uf2
-		)
-		list(APPEND clean_files ${COMBINED}.uf2)
-	endif()
+#	if (NOT ELF2UF2_FOUND)
+#		set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PICO_SDK_PATH}/tools)
+#		find_package(ELF2UF2)
+#	endif()
+#	if (ELF2UF2_FOUND)
+#		add_custom_command(TARGET ${COMBINED} POST_BUILD
+#			COMMAND ELF2UF2 ${COMBINED}.elf ${COMBINED}.uf2
+#		)
+#		list(APPEND clean_files ${COMBINED}.uf2)
+#	endif()
 
 	set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${clean_files}")
 endfunction()
