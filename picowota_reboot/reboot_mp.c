@@ -8,19 +8,19 @@
 
 #include "picowota/reboot.h"
 
-STATIC mp_obj_t mp_picowota_reboot(mp_obj_t arg_obj) {
+static mp_obj_t mp_picowota_reboot(mp_obj_t arg_obj) {
 	bool arg = mp_obj_is_true(arg_obj);
     picowota_reboot(arg);
 	return mp_obj_new_int(1);
 }
 
-STATIC MP_DEFINE_CONST_FUN_OBJ_1(mp_picowota_reboot_obj, mp_picowota_reboot);
+static MP_DEFINE_CONST_FUN_OBJ_1(mp_picowota_reboot_obj, mp_picowota_reboot);
 
-STATIC const mp_rom_map_elem_t example_module_globals_table[] = {
+static const mp_rom_map_elem_t example_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_picowota_reboot) },
     { MP_ROM_QSTR(MP_QSTR_reboot), MP_ROM_PTR(&mp_picowota_reboot_obj) },
 };
-STATIC MP_DEFINE_CONST_DICT(example_module_globals, example_module_globals_table);
+static MP_DEFINE_CONST_DICT(example_module_globals, example_module_globals_table);
 
 // Define module object.
 const mp_obj_module_t user_cmodule = {
