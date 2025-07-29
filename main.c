@@ -22,6 +22,7 @@
 #include "hardware/resets.h"
 #include "hardware/uart.h"
 #include "hardware/watchdog.h"
+#include "hardware/sync.h"
 
 #include "pico/stdlib.h"
 #include "pico/cyw43_arch.h"
@@ -448,13 +449,13 @@ struct comm_command seal_cmd = {
 	.handle = &handle_seal,
 };
 
-static void disable_interrupts(void)
-{
-	SysTick->CTRL &= ~1;
-
-	NVIC->ICER[0] = 0xFFFFFFFF;
-	NVIC->ICPR[0] = 0xFFFFFFFF;
-}
+//static void disable_interrupts(void)
+//{
+//	SysTick->CTRL &= ~1;
+//
+//	NVIC->ICER[0] = 0xFFFFFFFF;
+//	NVIC->ICPR[0] = 0xFFFFFFFF;
+//}
 
 static void reset_peripherals(void)
 {
